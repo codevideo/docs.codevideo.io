@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "generate-api": "node scripts/generate-npm-docs.js"
   },
   "dependencies": {
     "@docusaurus/core": "3.7.0",
@@ -27,6 +28,9 @@
     "@docusaurus/module-type-aliases": "3.7.0",
     "@docusaurus/tsconfig": "3.7.0",
     "@docusaurus/types": "3.7.0",
+    "docusaurus-plugin-typedoc": "^1.2.3",
+    "tar": "^7.4.3",
+    "typedoc": "^0.27.8",
     "typescript": "~5.6.2"
   },
   "browserslist": {
