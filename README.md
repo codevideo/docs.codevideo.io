@@ -1,6 +1,6 @@
-# Website
+# docs.codevideo.io
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+The documentation site for CodeVideo.
 
 ### Installation
 
@@ -9,6 +9,11 @@ npm install
 ```
 
 ### Local Development
+
+First generate the API documentation by running the following command:
+
+```shell
+npm run generate-api
 
 ```
 npm run start
@@ -26,16 +31,4 @@ This command generates static content into the `build` directory and can be serv
 
 ### Deployment
 
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+The site is deployed via Netlify. See the `netlify.toml` file for deployment settings.

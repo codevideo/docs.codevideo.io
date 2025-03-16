@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "npm run generate-api && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -13,7 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "generate-api": "node scripts/generate-npm-docs.js"
+    "compile-scripts": "tsc --project scripts/tsconfig.json",
+    "generate-api": "tsx scripts/generate-npm-docs.ts"
   },
   "dependencies": {
     "@docusaurus/core": "3.7.0",
@@ -28,8 +29,20 @@
     "@docusaurus/module-type-aliases": "3.7.0",
     "@docusaurus/tsconfig": "3.7.0",
     "@docusaurus/types": "3.7.0",
+    "@fullstackcraftllc/codevideo-html-gen": "^1.0.0",
+    "@fullstackcraftllc/codevideo-ide-react": "^0.0.33",
+    "@fullstackcraftllc/codevideo-types": "^2.0.40",
+    "@fullstackcraftllc/codevideo-virtual-author": "^1.0.3",
+    "@fullstackcraftllc/codevideo-virtual-editor": "^1.6.5",
+    "@fullstackcraftllc/codevideo-virtual-file-explorer": "^1.0.18",
+    "@fullstackcraftllc/codevideo-virtual-terminal": "^1.0.7",
+    "@jest/globals": "^29.7.0",
+    "@radix-ui/themes": "^3.2.1",
+    "@react-symbols/icons": "^1.2.8",
+    "@types/jest": "^29.5.14",
     "docusaurus-plugin-typedoc": "^1.2.3",
     "tar": "^7.4.3",
+    "tsx": "^4.19.3",
     "typedoc": "^0.27.8",
     "typescript": "~5.6.2"
   },

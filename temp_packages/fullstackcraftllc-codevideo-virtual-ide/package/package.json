@@ -1,0 +1,49 @@
+{
+  "name": "@fullstackcraftllc/codevideo-virtual-ide",
+  "version": "1.0.13",
+  "description": "TypeScript class that simulates a full IDE.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup -c ./rollup.config.js",
+    "type-check": "tsc --noEmit",
+    "test": "jest --testPathPattern='^(?!.*__tests__\\/fixtures).*$'",
+    "test-unit": "jest --testPathPattern=unit",
+    "example": "tsc && node ./dist/example.js"
+  },
+  "keywords": [
+    "TypeScript",
+    "CodeVideo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codevideo/codevideo-virtual-ide.git"
+  },
+  "issues": {
+    "url": "https://github.com/codevideo/codevideo-virtual-ide/issues"
+  },
+  "author": "Chris Frewin",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-typescript": "^7.23.3",
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "rollup": "^4.13.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@fullstackcraftllc/codevideo-virtual-author": "^1.0.3",
+    "@fullstackcraftllc/codevideo-virtual-editor": "^1.6.5",
+    "@fullstackcraftllc/codevideo-virtual-file-explorer": "^1.0.18",
+    "@fullstackcraftllc/codevideo-virtual-terminal": "^1.0.7"
+  },
+  "peerDependencies": {
+    "@fullstackcraftllc/codevideo-types": "^2.0.35"
+  }
+}
