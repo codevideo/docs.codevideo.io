@@ -8,16 +8,17 @@ import * as td from 'typedoc';
 const execAsync = promisify(exec);
 
 const PACKAGES = [
-  '@fullstackcraftllc/codevideo-virtual-ide',
-  '@fullstackcraftllc/codevideo-virtual-file-explorer',
-  '@fullstackcraftllc/codevideo-virtual-editor',
-  '@fullstackcraftllc/codevideo-virtual-terminal',
+  {packageName: '@fullstackcraftllc/codevideo-virtual-ide', sidebarPosition: 1},
+  {packageName: '@fullstackcraftllc/codevideo-virtual-file-explorer', sidebarPosition: 2},
+  {packageName: '@fullstackcraftllc/codevideo-virtual-editor', sidebarPosition: 3},
+  {packageName: '@fullstackcraftllc/codevideo-virtual-terminal', sidebarPosition: 4},
   // '@fullstackcraftllc/codevideo-ide-react',
   // Add more as needed (note: TypeScript packages only!)
 ];
 
 const TEMP_DIR = path.join(__dirname, '..', 'temp_packages');
-const OUTPUT_DIR = path.join(__dirname, '..', 'docs', 'api');
+const OUTPUT_DIR = path.join(__dirname, '..', 'docs', 'libraries');
+// const OUTPUT_DIR = path.join(__dirname, '..', 'tmp');
 
 /**
  * Download and extract an npm package
@@ -61,12 +62,12 @@ async function downloadPackage(packageName: string): Promise<string | null> {
  * @param packagePath - Path to the extracted package
  * @param packageName - Name of the npm package
  */
-async function generateTypeDoc(packagePath: string | null, packageName: string): Promise<void> {
+async function generateTypeDoc(packagePath: string | null, packageItem: {packageName: string, sidebarPosition: number}): Promise<void> {
   if (!packagePath) return;
   
-  console.log(`Generating documentation for ${packageName}...`);
+  console.log(`Generating documentation for ${packageItem.packageName}...`);
   
-  const safeName = packageName.replace(/\//g, '-').replace(/^@/, '');
+  const safeName = packageItem.packageName.replace(/\//g, '-').replace(/^@/, '');
   const packageOutputDir = path.join(OUTPUT_DIR, safeName);
   
   try {
@@ -79,12 +80,13 @@ async function generateTypeDoc(packagePath: string | null, packageName: string):
       ? path.join(packagePath, typesFile)
       : path.join(packagePath, packageJson.main || 'index.js');
     
-    const app = await td.Application.bootstrap({
+    const app = await td.Application.bootstrapWithPlugins({
       entryPoints: [entryPoint],
       out: packageOutputDir,
       plugin: ['typedoc-plugin-markdown'],
-      readme: 'none',
-      name: packageName,
+      theme: 'markdown',
+      router: 'module',
+      name: packageItem.packageName,
       exclude: ["**/__tests__/**/*", "**/*.test.ts", "**/*.spec.ts"],
       excludeExternals: true,
       excludePrivate: true,
@@ -96,24 +98,38 @@ async function generateTypeDoc(packagePath: string | null, packageName: string):
     const project = await app.convert();
     if (project) {
       await app.generateDocs(project, packageOutputDir);
-      console.log(`Documentation for ${packageName} generated in ${packageOutputDir}`);
+      console.log(`Documentation for ${packageItem.packageName} generated in ${packageOutputDir}`);
+
+      // now read in the globals.md file and add it to the index.md file
+      const globalsMarkdown = fs.readFileSync(path.join(packageOutputDir, 'globals.md'), 'utf8');
+
+      // remove the first line of the globals.md file which includes the README for some reason
+      const globalsMarkdownLines = globalsMarkdown.split('\n');
+      globalsMarkdownLines.shift();
+      globalsMarkdownLines.shift();
+      globalsMarkdownLines.shift();
+      globalsMarkdownLines.shift();
+      const globalsMarkdownContent = globalsMarkdownLines.join('\n');
       
       // Create index.md file to link in Docusaurus
       const indexPath = path.join(packageOutputDir, 'index.md');
       const indexContent = `---
-title: "${packageName}"
-sidebar_label: "${packageName}"
+title: "${packageItem.packageName}"
+sidebar_label: "${packageItem.packageName}"
+sidebar_position: ${packageItem.sidebarPosition}
 ---
 
-# ${packageName}
-
-API documentation for ${packageName}.
+${globalsMarkdownContent}}
 
 `;
       fs.writeFileSync(indexPath, indexContent);
+
+      // remove README.md and globals.md files
+      fs.unlinkSync(path.join(packageOutputDir, 'README.md'));
+      fs.unlinkSync(path.join(packageOutputDir, 'globals.md'));
     }
   } catch (error) {
-    console.error(`Error generating documentation for ${packageName}:`, error);
+    console.error(`Error generating documentation for ${packageItem.packageName}:`, error);
   }
 }
 
@@ -126,10 +142,10 @@ async function main(): Promise<void> {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   
   // Process each package
-  for (const packageName of PACKAGES) {
-    const packagePath = await downloadPackage(packageName);
+  for (const packageItem of PACKAGES) {
+    const packagePath = await downloadPackage(packageItem.packageName);
     if (packagePath) {
-      await generateTypeDoc(packagePath, packageName);
+      await generateTypeDoc(packagePath, packageItem);
     }
   }
   
@@ -137,19 +153,19 @@ async function main(): Promise<void> {
   const apiIndexPath = path.join(OUTPUT_DIR, 'index.md');
   let apiIndexContent = `---
 title: API Documentation
-sidebar_label: Overview
-slug: /api
+sidebar_label: Libraries
+slug: /libraries
 ---
 
-# CodeVideo Documentation
+# CodeVideo Libraries Documentation
 
-This section contains the API documentation for all CodeVideo packages.
+This section contains the API documentation for all CodeVideo TypeScript packages.
 
 `;
 
-  PACKAGES.forEach(packageName => {
-    const safeName = packageName.replace(/\//g, '-').replace(/^@/, '');
-    apiIndexContent += `- [${packageName}](./${safeName})\n`;
+  PACKAGES.forEach(packageItem => {
+    const safeName = packageItem.packageName.replace(/\//g, '-').replace(/^@/, '');
+    apiIndexContent += `- [${packageItem.packageName}](/docs/libraries/${safeName})\n`;
   });
   
   fs.writeFileSync(apiIndexPath, apiIndexContent);

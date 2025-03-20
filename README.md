@@ -14,8 +14,11 @@ First generate the API documentation by running the following command:
 
 ```shell
 npm run generate-api
-
 ```
+
+Then start the local development server:
+
+```shell
 npm run start
 ```
 
@@ -23,7 +26,7 @@ This command starts a local development server and opens up a browser window. Mo
 
 ### Build
 
-```
+```shell
 npm run build
 ```
 

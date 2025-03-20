@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "npm run generate-api && docusaurus start",
     "build": "npm run generate-api && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -23,7 +23,8 @@
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "typedoc": "^0.28.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.7.0",
@@ -40,10 +41,9 @@
     "@radix-ui/themes": "^3.2.1",
     "@react-symbols/icons": "^1.2.8",
     "@types/jest": "^29.5.14",
-    "docusaurus-plugin-typedoc": "^1.2.3",
     "tar": "^7.4.3",
     "tsx": "^4.19.3",
-    "typedoc": "^0.27.8",
+    "typedoc-plugin-markdown": "^4.5.2",
     "typescript": "~5.6.2"
   },
   "browserslist": {

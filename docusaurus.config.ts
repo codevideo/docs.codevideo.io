@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'CodeVideo Documentation',
   tagline: 'Documentation for CodeVideo TypeScript packages',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
   url: 'https://docs.codevideo.io',
@@ -61,15 +61,19 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: '/docs/overview',
           position: 'left',
-          label: 'Documentation',
+          label: 'Overview',
         },
         {
-          to: '/docs/api',
+          to: '/docs/quick-start',
           position: 'left',
-          label: 'API',
+          label: 'Video Quick Start',
+        },
+        {
+          to: '/docs/libraries',
+          position: 'left',
+          label: 'Library Documentation',
         },
         {
           href: 'https://github.com/codevideo',
@@ -85,12 +89,16 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Getting Started',
-              to: '/docs/intro',
+              label: 'Overview',
+              to: '/docs/overview',
             },
             {
-              label: 'API Documentation',
-              to: '/docs/api',
+              label: 'Quick Start',
+              to: '/docs/quick-start',
+            },
+            {
+              label: 'Library Documentation',
+              to: '/docs/libraries',
             },
           ],
         },
@@ -99,7 +107,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub Discussions',
-              href: 'https://github.com/codevideo/docs.codevideo.io/discussions',
+              href: 'https://github.com/codevideo/discussions',
             },
           ],
         },
@@ -113,7 +121,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} CodeVideo. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} CodeVideo.`,
     },
     prism: {
       theme: prismThemes.github,
