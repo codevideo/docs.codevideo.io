@@ -5,6 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "npm run generate-api && docusaurus start",
+    "dev": "npm run generate-api && docusaurus start",
+    "develop": "npm run generate-api && docusaurus start",
     "build": "npm run generate-api && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

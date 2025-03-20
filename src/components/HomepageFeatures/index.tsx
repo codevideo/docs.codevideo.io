@@ -15,17 +15,16 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/logo.svg').default,
     description: (
       <>
-        CodeVideo is a framework for producing clear and correct software educational content with ease. Export your course or lesson to video, markdown, web, and much more in minutes.
+        CodeVideo is a framework for producing clear, accurate, and correct software educational content with ease. 
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Build Once, Export Everywhere',
     Svg: require('@site/static/img/logo.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Export your course or lesson to video, markdown, web, and much more in minutes.
       </>
     ),
   },

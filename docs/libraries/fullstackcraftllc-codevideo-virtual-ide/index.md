@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ### VirtualIDE
 
-theme_defined_in: [index.js:16](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L16)
+theme_defined_in: [index.js:16](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L16)
 
 Represents a virtual IDE that can be manipulated by a series of actions.
 A virtual IDE in the CodeVideo world consists of 4 main parts:
@@ -25,7 +25,7 @@ A virtual IDE in the CodeVideo world consists of 4 main parts:
 
 > **new VirtualIDE**(`project`, `initialActionIndex`, `verbose`): `VirtualIDE`
 
-theme_defined_in: [index.js:17](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L17)
+theme_defined_in: [index.js:17](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L17)
 
 ###### kind_plural_parameter
 
@@ -51,13 +51,13 @@ theme_defined_in: [index.js:17](https://github.com/codevideo/docs.codevideo.io/b
 
 > **currentAuthorIndex**: `number`
 
-theme_defined_in: [index.js:22](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L22)
+theme_defined_in: [index.js:22](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L22)
 
 ##### currentCursorPosition
 
 > **currentCursorPosition**: `{ x: number; y: number }`
 
-theme_defined_in: [index.js:23](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L23)
+theme_defined_in: [index.js:23](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L23)
 
 ###### x
 
@@ -71,49 +71,49 @@ theme_defined_in: [index.js:23](https://github.com/codevideo/docs.codevideo.io/b
 
 > **currentEditorIndex**: `number`
 
-theme_defined_in: [index.js:20](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L20)
+theme_defined_in: [index.js:20](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L20)
 
 ##### currentTerminalIndex
 
 > **currentTerminalIndex**: `number`
 
-theme_defined_in: [index.js:21](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L21)
+theme_defined_in: [index.js:21](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L21)
 
 ##### logs
 
 > **logs**: `any[]`
 
-theme_defined_in: [index.js:25](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L25)
+theme_defined_in: [index.js:25](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L25)
 
 ##### verbose
 
 > **verbose**: `any`
 
-theme_defined_in: [index.js:24](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L24)
+theme_defined_in: [index.js:24](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L24)
 
 ##### virtualAuthors
 
 > **virtualAuthors**: `any[]`
 
-theme_defined_in: [index.js:28](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L28)
+theme_defined_in: [index.js:28](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L28)
 
 ##### virtualEditors
 
 > **virtualEditors**: `any[]`
 
-theme_defined_in: [index.js:18](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L18)
+theme_defined_in: [index.js:18](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L18)
 
 ##### virtualFileExplorer
 
 > **virtualFileExplorer**: `VirtualFileExplorer`
 
-theme_defined_in: [index.js:34](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L34)
+theme_defined_in: [index.js:34](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L34)
 
 ##### virtualTerminals
 
 > **virtualTerminals**: `any[]`
 
-theme_defined_in: [index.js:19](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L19)
+theme_defined_in: [index.js:19](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L19)
 
 #### Methods
 
@@ -121,7 +121,7 @@ theme_defined_in: [index.js:19](https://github.com/codevideo/docs.codevideo.io/b
 
 > **addVirtualAuthor**(`author`): `void`
 
-theme_defined_in: [index.js:71](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L71)
+theme_defined_in: [index.js:71](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L71)
 
 Adds a virtual author to the virtual IDE.
 
@@ -141,7 +141,7 @@ The virtual author to add.
 
 > **addVirtualEditor**(`fileName`, `virtualEditor`): `void`
 
-theme_defined_in: [index.js:57](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L57)
+theme_defined_in: [index.js:57](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L57)
 
 Adds a virtual editor to the virtual IDE.
 
@@ -167,7 +167,7 @@ The virtual editor to add.
 
 > **addVirtualTerminal**(`terminal`): `void`
 
-theme_defined_in: [index.js:64](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L64)
+theme_defined_in: [index.js:64](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L64)
 
 Adds a virtual terminal to the virtual IDE.
 
@@ -187,7 +187,7 @@ The virtual terminal to add.
 
 > **applyAction**(`action`): `void`
 
-theme_defined_in: [index.js:78](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L78)
+theme_defined_in: [index.js:78](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L78)
 
 Applies an action to the virtual IDE.
 
@@ -207,7 +207,7 @@ The action to apply.
 
 > **applyActions**(`actions`): `void`
 
-theme_defined_in: [index.js:387](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L387)
+theme_defined_in: [index.js:387](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L387)
 
 Applies a series of actions to the virtual code block.
 
@@ -227,7 +227,7 @@ The actions to apply.
 
 > **executeTerminalCommandSideEffects**(): `void`
 
-theme_defined_in: [index.js:176](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L176)
+theme_defined_in: [index.js:176](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L176)
 
 Executes IDE side effects for a terminal command.
 The terminal itself doesn't have knowledge of the filesystem, so we need to handle that here.
@@ -241,7 +241,7 @@ The terminal itself doesn't have knowledge of the filesystem, so we need to hand
 
 > **getAuthorSnapshot**(): `{ authors: { currentSpeechCaption: any }[] }`
 
-theme_defined_in: [index.js:471](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L471)
+theme_defined_in: [index.js:471](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L471)
 
 Gets the author snapshot.
 
@@ -257,7 +257,7 @@ Gets the author snapshot.
 
 > **getCourseSnapshot**(): `{ authorSnapshot: { authors: { currentSpeechCaption: any }[] }; editorSnapshot: { editors: { caretPosition: any; content: any; filename: any; highlightCoordinates: any; isActive: boolean; isSaved: any }[] }; fileExplorerSnapshot: { fileStructure: IFileStructure }; mouseSnapshot: { buttonStates: { left: boolean; middle: boolean; right: boolean }; scrollPosition: { x: number; y: number }; timestamp: number; type: string; x: number; y: number }; terminalSnapshot: { terminals: { content: any }[] } }`
 
-theme_defined_in: [index.js:483](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L483)
+theme_defined_in: [index.js:483](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L483)
 
 Gets the project snapshot. Should provide everything to completely recreate an IDE visually, from scratch.
 
@@ -349,7 +349,7 @@ Gets the project snapshot. Should provide everything to completely recreate an I
 
 > **getCursorPosition**(): `{ x: number; y: number }`
 
-theme_defined_in: [index.js:396](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L396)
+theme_defined_in: [index.js:396](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L396)
 
 Gets the current cursor position.
 
@@ -371,7 +371,7 @@ The current cursor position.
 
 > **getEditorSnapshot**(): `{ editors: { caretPosition: any; content: any; filename: any; highlightCoordinates: any; isActive: boolean; isSaved: any }[] }`
 
-theme_defined_in: [index.js:422](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L422)
+theme_defined_in: [index.js:422](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L422)
 
 Gets the editor snapshot.
 
@@ -389,7 +389,7 @@ The editor snapshot.
 
 > **getFileExplorerSnapshot**(): `{ fileStructure: IFileStructure }`
 
-theme_defined_in: [index.js:413](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L413)
+theme_defined_in: [index.js:413](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L413)
 
 Gets the file explorer snapshot.
 
@@ -407,7 +407,7 @@ The file explorer snapshot.
 
 > **getLogs**(): `any[]`
 
-theme_defined_in: [index.js:513](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L513)
+theme_defined_in: [index.js:513](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L513)
 
 Gets the logs for the virtual IDE.
 
@@ -421,7 +421,7 @@ The logs for the virtual IDE.
 
 > **getMouseSnapshot**(): `{ buttonStates: { left: boolean; middle: boolean; right: boolean }; scrollPosition: { x: number; y: number }; timestamp: number; type: string; x: number; y: number }`
 
-theme_defined_in: [index.js:451](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L451)
+theme_defined_in: [index.js:451](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L451)
 
 Gets the mouse snapshot.
 
@@ -477,7 +477,7 @@ Gets the mouse snapshot.
 
 > **getOpenFiles**(): `string[]`
 
-theme_defined_in: [index.js:406](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L406)
+theme_defined_in: [index.js:406](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L406)
 
 Gets the open files in the virtual IDE.
 
@@ -491,7 +491,7 @@ The open files in the virtual IDE.
 
 > **getTerminalSnapshot**(): `{ terminals: { content: any }[] }`
 
-theme_defined_in: [index.js:439](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L439)
+theme_defined_in: [index.js:439](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L439)
 
 Gets the terminal snapshot.
 
@@ -507,7 +507,7 @@ Gets the terminal snapshot.
 
 > **reconstituteFromActionsAtActionIndex**(`actions`, `actionIndex`): `void`
 
-theme_defined_in: [index.js:535](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L535)
+theme_defined_in: [index.js:535](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L535)
 
 ###### kind_plural_parameter
 
@@ -527,7 +527,7 @@ theme_defined_in: [index.js:535](https://github.com/codevideo/docs.codevideo.io/
 
 > **reconstituteFromCourseAtActionIndex**(`course`, `actionIndex`): `void`
 
-theme_defined_in: [index.js:516](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L516)
+theme_defined_in: [index.js:516](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L516)
 
 ###### kind_plural_parameter
 
@@ -547,7 +547,7 @@ theme_defined_in: [index.js:516](https://github.com/codevideo/docs.codevideo.io/
 
 > **reconstituteFromLessonAtActionIndex**(`lesson`, `actionIndex`): `void`
 
-theme_defined_in: [index.js:528](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L528)
+theme_defined_in: [index.js:528](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L528)
 
 ###### kind_plural_parameter
 
@@ -567,7 +567,7 @@ theme_defined_in: [index.js:528](https://github.com/codevideo/docs.codevideo.io/
 
 > **setVerbose**(`verbose`): `void`
 
-theme_defined_in: [index.js:496](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L496)
+theme_defined_in: [index.js:496](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L496)
 
 Sets the verbose flag for the virtual IDE and all its components.
 
@@ -587,6 +587,6 @@ Sets the verbose flag for the virtual IDE and all its components.
 
 > `const` **supportedCommands**: `string[]`
 
-theme_defined_in: [index.js:7](https://github.com/codevideo/docs.codevideo.io/blob/70d4f7dbb08a35fa96caa0010eab126cf01f007c/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L7)
+theme_defined_in: [index.js:7](https://github.com/codevideo/docs.codevideo.io/blob/ee25232fb9bf591e977bd8d3f0fbd774210c51f0/temp_packages/fullstackcraftllc-codevideo-virtual-ide/package/dist/index.js#L7)
 }
 

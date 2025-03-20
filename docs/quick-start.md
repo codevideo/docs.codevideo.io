@@ -1,21 +1,15 @@
 ---
 title: "Video Quick Start"
-sidebar_label: "Video Quick Start"
+sidebar_label: "CodeVideo CLI Quick Start"
 slug: /quick-start
 sidebar_position: 1
 ---
 
 # Video Quick Start
 
-**We highly recommend you quickly read concepts in [the Overview section](/docs/overview) before starting here.**
+**We highly recommend you quickly read concepts in [the overview section](/docs/overview) before starting here.**
 
-This guide shows you how to get started generating videos with CodeVideo.
-
-As of the V3 video generation configuration in March 2025, the process is essentially a job-based puppeteer stream recorder. From a high level:
-
-1. A static Gatsby server runs at 7001 with a pre-configured `@fullstackcraftllc/codevideo-ide-react` component (`<CodeVideoIDE />`) 
-2. A POST request is sent to `create-video-v3` with the actions
-3. The express server generates audio for each speaking step in the actions
+This guide shows you how to get started generating videos with the CodeVideo CLI.
 
 ## Installation
 
@@ -47,9 +41,9 @@ Upon completion, you should see the following message:
 ```bash
 /> CodeVideo generation in progress...
 [================================] 100%
-✅ Video saved to codevideo.mp4
+✅ CodeVideo saved to codevideo.mp4
 ```
 
-You'll find the video in the root of the CodeVideo CLI repository.
+You'll find the `codevideo.mp4` file in the root of the CodeVideo CLI repository.
 
 Enjoy!
