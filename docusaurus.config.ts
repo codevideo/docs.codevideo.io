@@ -76,6 +76,12 @@ const config: Config = {
         },
         {
           type: 'doc',
+          docId: 'actions',
+          position: 'left',
+          label: 'Actions',
+        },
+        {
+          type: 'doc',
           docId: 'libraries/index',
           position: 'left',
           label: 'Libraries',
@@ -110,6 +116,10 @@ const config: Config = {
             {
               label: 'API reference',
               to: '/api',
+            },
+            {
+              label: 'Actions',
+              to: '/actions',
             },
             {
               label: 'Overview',

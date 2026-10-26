@@ -1,0 +1,63 @@
+---
+title: Actions Reference
+sidebar_label: Actions
+slug: /actions
+sidebar_position: 3
+description: Every action you can use in a CodeVideo project, grouped by domain.
+---
+
+import ActionList from '@site/src/components/ActionList';
+
+# Actions Reference
+
+Every CodeVideo project is a list of actions. Each action is a `{ "name": "...", "value": "..." }` object: the name says what happens, the value says what to do it with. Send a list of them to the API (see the [Quick Start](/)) or render them locally with the [CLI](/cli).
+
+Use the table of contents to jump to a domain, or link to an action directly, e.g. [`/actions#editor-type`](#editor-type).
+
+## Author
+
+What the narrator says, and pauses between steps.
+
+<ActionList domain="author" />
+
+## Editor
+
+Typing, keystrokes, selection, scrolling and the context menu in the editor.
+
+<ActionList domain="editor" />
+
+## File explorer
+
+Creating, opening, renaming, moving and deleting files and folders, plus the explorer's menus and inputs.
+
+<ActionList domain="file-explorer" />
+
+## Mouse
+
+Moving the mouse to parts of the IDE, and left or right clicking.
+
+<ActionList domain="mouse" />
+
+## Terminal
+
+Typing and keystrokes in the terminal, and setting its output, prompt and working directory.
+
+<ActionList domain="terminal" />
+
+## External
+
+Showing a web page, or a live preview of the code, in a browser.
+
+<ActionList domain="external" />
+
+## Slide
+
+Showing a Markdown slide.
+
+<ActionList domain="slide" />
+
+## Composite
+
+Shortcuts that expand into several actions.
+
+<ActionList domain="composite" />

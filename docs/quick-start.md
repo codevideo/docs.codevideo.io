@@ -42,5 +42,6 @@ Response:
 ## Next steps
 
 - [API reference](/api): request options, errors, tokens and limits.
+- [Actions](/actions): all 133 actions you can put in a project.
 - [CLI](/cli): render videos on your own machine instead of through the API.
 - [Overview](/overview): how actions, lessons and courses fit together.
