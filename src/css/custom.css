@@ -1,30 +1,91 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * The codevideo.io / studio.codevideo.io look: Radix Themes' mint accent on
+ * sage gray. Values are Radix color steps, noted next to each. The primary
+ * shade scale follows Docusaurus' color generator (lightness +-10/15/30%).
  */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary:         #1abf87;  /* Base light primary */
-  --ifm-color-primary-dark:    #169d74;  /* Slightly darker */
-  --ifm-color-primary-darker:  #128a61;  /* Even darker */
-  --ifm-color-primary-darkest: #0f7750;  /* Darkest variant */
-  --ifm-color-primary-light:   #20d29b;  /* Slightly lighter */
-  --ifm-color-primary-lighter: #27d7a6;  /* Even lighter */
-  --ifm-color-primary-lightest:#36e0b5;  /* Lightest variant */
+  --ifm-color-primary: #027864; /* mint-11 */
+  --ifm-color-primary-dark: #026c5a;
+  --ifm-color-primary-darker: #026655;
+  --ifm-color-primary-darkest: #015446;
+  --ifm-color-primary-light: #02846e;
+  --ifm-color-primary-lighter: #028a73;
+  --ifm-color-primary-lightest: #039c82;
+
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f7f9f8; /* sage-2 */
+  --ifm-color-content: #1a211e; /* sage-12 */
+  --ifm-color-content-secondary: #5f6563; /* sage-11 */
+  --ifm-toc-border-color: #dfe2e0; /* sage-5 */
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.8);
+  --ifm-footer-background-color: var(--ifm-background-surface-color);
+
+  --ifm-global-radius: 0.375rem;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(2, 120, 100, 0.1); /* mint-11 */
+
+  --cv-glow-1: rgba(126, 207, 189, 0.22); /* mint-7 */
+  --cv-glow-2: rgba(156, 224, 208, 0.16); /* mint-6 */
+  --cv-card-border: #dfe2e0; /* sage-5 */
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary:        #23FDB2; /* Base dark primary */
-  --ifm-color-primary-dark:   #02F29E; /* Slightly darker */
-  --ifm-color-primary-darker: #02DE91; /* Even darker */
-  --ifm-color-primary-darkest:#02C07D; /* Darkest variant */
-  --ifm-color-primary-light:  #49FDBE; /* Slightly lighter */
-  --ifm-color-primary-lighter:#68FDC9; /* Even lighter */
-  --ifm-color-primary-lightest:#90FED7; /* Lightest variant */
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* Same selector as Infima's dark block, so this file (loaded later) wins. */
+html[data-theme='dark'] {
+  --ifm-color-primary: #58d5ba; /* mint-11 */
+  --ifm-color-primary-dark: #40cfb0;
+  --ifm-color-primary-darker: #34ccab;
+  --ifm-color-primary-darkest: #2aa88d;
+  --ifm-color-primary-light: #70dbc4;
+  --ifm-color-primary-lighter: #7cdec9;
+  --ifm-color-primary-lightest: #a0e7d8;
+
+  --ifm-background-color: #101211; /* sage-1 */
+  --ifm-background-surface-color: #171918; /* sage-2 */
+  --ifm-color-content: #eceeed; /* sage-12 */
+  --ifm-color-content-secondary: #adb5b2; /* sage-11 */
+  --ifm-toc-border-color: #373b39; /* sage-6 */
+  --ifm-navbar-background-color: rgba(16, 18, 17, 0.75); /* sage-1 */
+
+  --docusaurus-highlighted-code-line-bg: rgba(88, 213, 186, 0.15); /* mint-11 */
+
+  --cv-glow-1: rgba(39, 127, 112, 0.35); /* mint-8 */
+  --cv-glow-2: rgba(30, 104, 95, 0.25); /* mint-7 */
+  --cv-card-border: #373b39; /* sage-6 */
+}
+
+/* Mint glow behind everything: a static, CSS-only take on codevideo.io's SvgBackground. */
+html {
+  background-image:
+    radial-gradient(60rem 30rem at 0% -10%, var(--cv-glow-1), transparent 70%),
+    radial-gradient(50rem 30rem at 100% 0%, var(--cv-glow-2), transparent 70%);
+  background-attachment: fixed;
+}
+
+/* Translucent, blurred navbar like codevideo.io's floating nav card. */
+.navbar {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  box-shadow: none;
+}
+
+/* Infima reuses the navbar color for the mobile drawer; keep that opaque. */
+.navbar-sidebar {
+  background-color: var(--ifm-background-color);
+}
+
+.navbar__title {
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+.footer {
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+/* Flat bordered cards, like Radix Card, for the Actions reference. */
+.card {
+  border: 1px solid var(--cv-card-border);
+  box-shadow: none;
 }

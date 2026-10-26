@@ -53,36 +53,40 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/og.png',
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       title: 'CodeVideo Docs',
       logo: {
         alt: 'CodeVideo Logo',
         src: 'img/logo.svg',
+        srcDark: 'img/logo-dark.svg',
       },
+      // Plain links: with a single sidebar, `type: 'doc'` items would all be
+      // highlighted on every page.
       items: [
         {
-          type: 'doc',
-          docId: 'quick-start',
+          to: '/',
+          activeBaseRegex: '^/$',
           position: 'left',
           label: 'Quick Start',
         },
         {
-          type: 'doc',
-          docId: 'api',
+          to: '/api',
           position: 'left',
           label: 'API',
         },
         {
-          type: 'doc',
-          docId: 'actions',
+          to: '/actions',
           position: 'left',
           label: 'Actions',
         },
         {
-          type: 'doc',
-          docId: 'libraries/index',
+          to: '/libraries',
           position: 'left',
           label: 'Libraries',
         },
@@ -104,7 +108,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
           title: 'Docs',
@@ -170,7 +174,8 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismThemes.vsDark,
+      additionalLanguages: ['bash'],
     },
   } satisfies Preset.ThemeConfig,
 };
