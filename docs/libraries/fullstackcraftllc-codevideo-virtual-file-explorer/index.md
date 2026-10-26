@@ -10,63 +10,29 @@ sidebar_position: 2
 
 ### VirtualFileExplorer
 
-theme_defined_in: [index.js:6](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L6)
-
 Represents a virtual file explorer that can be used to simulate file system operations in the CodeVideo ecosystem.
+Supports file and folder creation, moving, renaming, and deletion.
+Even tracks state of new file, new folder, and rename input texts.
 
 #### Constructors
 
 ##### new VirtualFileExplorer()
 
-> **new VirtualFileExplorer**(`actions`, `verbose`): `VirtualFileExplorer`
+> **new VirtualFileExplorer**(`actions`?, `verbose`?): [`VirtualFileExplorer`](#virtualfileexplorer)
 
-theme_defined_in: [index.js:7](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L7)
+###### Parameters
 
-###### kind_plural_parameter
+###### actions?
 
-###### actions
+`FileExplorerAction`[]
 
-`any`
+###### verbose?
 
-###### verbose
+`boolean`
 
-`any`
+###### Returns
 
-###### theme_returns
-
-`VirtualFileExplorer`
-
-#### Properties
-
-##### actionsApplied
-
-> **actionsApplied**: `any[]`
-
-theme_defined_in: [index.js:10](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L10)
-
-##### currentFileStructure
-
-> **currentFileStructure**: `{}`
-
-theme_defined_in: [index.js:9](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L9)
-
-##### openFiles
-
-> **openFiles**: `Set<any>`
-
-theme_defined_in: [index.js:11](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L11)
-
-##### presentWorkingDirectory
-
-> **presentWorkingDirectory**: `string`
-
-theme_defined_in: [index.js:8](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L8)
-
-##### verbose
-
-> **verbose**: `any`
-
-theme_defined_in: [index.js:12](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L12)
+[`VirtualFileExplorer`](#virtualfileexplorer)
 
 #### Methods
 
@@ -74,15 +40,13 @@ theme_defined_in: [index.js:12](https://github.com/codevideo/docs.codevideo.io/b
 
 > **applyAction**(`action`): `void`
 
-theme_defined_in: [index.js:27](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L27)
-
-###### kind_plural_parameter
+###### Parameters
 
 ###### action
 
-`any`
+`FileExplorerAction`
 
-###### theme_returns
+###### Returns
 
 `void`
 
@@ -90,205 +54,88 @@ theme_defined_in: [index.js:27](https://github.com/codevideo/docs.codevideo.io/b
 
 > **applyActions**(`actions`): `void`
 
-theme_defined_in: [index.js:22](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L22)
-
 Applies a list of actions to the virtual file explorer
 
-###### kind_plural_parameter
+###### Parameters
 
 ###### actions
 
-`any`
+`FileExplorerAction`[]
 
 List of actions to apply
 
-###### theme_returns
+###### Returns
 
 `void`
 
-##### buildTreeString()
+##### applySnapshot()
 
-> **buildTreeString**(`structure`, `indent`, `showEvenIfCollapsed`): `string`
+> **applySnapshot**(`snapshot`): `void`
 
-theme_defined_in: [index.js:543](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L543)
+Applies a snapshot to the virtual file explorer
+Useful for restoring the state of the file explorer at a specific point in time
 
-###### kind_plural_parameter
+###### Parameters
 
-###### structure
+###### snapshot
 
-`any`
+`IFileExplorerSnapshot`
 
-###### indent
-
-`string` = `""`
-
-###### showEvenIfCollapsed
-
-`boolean` = `true`
-
-###### theme_returns
-
-`string`
-
-##### closeFile()
-
-> **closeFile**(`fileName`): `void`
-
-theme_defined_in: [index.js:581](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L581)
-
-###### kind_plural_parameter
-
-###### fileName
-
-`any`
-
-###### theme_returns
+###### Returns
 
 `void`
-
-##### copyDirectory()
-
-> **copyDirectory**(`source`): `{ children: {}; collapsed: any; content: any; type: string }`
-
-theme_defined_in: [index.js:524](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L524)
-
-###### kind_plural_parameter
-
-###### source
-
-`any`
-
-###### theme_returns
-
-`{ children: {}; collapsed: any; content: any; type: string }`
-
-###### children
-
-> **children**: `{}` = `{}`
-
-###### collapsed
-
-> **collapsed**: `any` = `source.collapsed`
-
-###### content
-
-> **content**: `any` = `source.content`
-
-###### type
-
-> **type**: `string` = `'directory'`
-
-##### createDirectoryItem()
-
-> **createDirectoryItem**(): `{ children: {}; collapsed: boolean; content: string; type: string }`
-
-theme_defined_in: [index.js:501](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L501)
-
-###### theme_returns
-
-`{ children: {}; collapsed: boolean; content: string; type: string }`
-
-###### children
-
-> **children**: `{}` = `{}`
-
-###### collapsed
-
-> **collapsed**: `boolean` = `false`
-
-###### content
-
-> **content**: `string` = `''`
-
-###### type
-
-> **type**: `string` = `'directory'`
-
-##### createFileItem()
-
-> **createFileItem**(`path`): `{ caretPosition: { col: number; row: number }; content: string; language: any; type: string }`
-
-theme_defined_in: [index.js:493](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L493)
-
-###### kind_plural_parameter
-
-###### path
-
-`any`
-
-###### theme_returns
-
-`{ caretPosition: { col: number; row: number }; content: string; language: any; type: string }`
-
-###### caretPosition
-
-> **caretPosition**: `{ col: number; row: number }`
-
-###### caretPosition.col
-
-> **col**: `number` = `0`
-
-###### caretPosition.row
-
-> **row**: `number` = `0`
-
-###### content
-
-> **content**: `string` = `''`
-
-###### language
-
-> **language**: `any`
-
-###### type
-
-> **type**: `string` = `'file'`
 
 ##### getActionsApplied()
 
-> **getActionsApplied**(): `any[]`
-
-theme_defined_in: [index.js:429](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L429)
+> **getActionsApplied**(): `FileExplorerAction`[]
 
 Gets the list of actions applied to the virtual file explorer
 
-###### theme_returns
+###### Returns
 
-`any[]`
+`FileExplorerAction`[]
 
 Array of actions applied
 
+##### getCurrentFileExplorerSnapshot()
+
+> **getCurrentFileExplorerSnapshot**(): `IFileExplorerSnapshot`
+
+Gets the current file explorer snapshot
+
+###### Returns
+
+`IFileExplorerSnapshot`
+
+The current file explorer snapshot
+
 ##### getCurrentFileStructure()
 
-> **getCurrentFileStructure**(): `{}`
-
-theme_defined_in: [index.js:422](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L422)
+> **getCurrentFileStructure**(): `IFileStructure`
 
 Gets the current file structure
 
-###### theme_returns
+###### Returns
 
-`{}`
+`IFileStructure`
 
 The current file structure
 
 ##### getCurrentFileTree()
 
-> **getCurrentFileTree**(`showEvenIfCollapsed`): `string`
-
-theme_defined_in: [index.js:308](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L308)
+> **getCurrentFileTree**(`showEvenIfCollapsed`?): `string`
 
 Gets the current file tree in a string format
 
-###### kind_plural_parameter
+###### Parameters
 
-###### showEvenIfCollapsed
+###### showEvenIfCollapsed?
 
-`boolean` = `true`
+`boolean`
 
 Whether to show collapsed directories in the tree
 
-###### theme_returns
+###### Returns
 
 `string`
 
@@ -296,232 +143,87 @@ String representation of the current file tree
 
 ##### getFileContents()
 
-> **getFileContents**(`fileName`): `any`
-
-theme_defined_in: [index.js:437](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L437)
+> **getFileContents**(`fileName`): `string`
 
 Gets the contents of a specific file. Changes in the editor are only carried over here until the file is explicitly saved in virtual-ide.
 
-###### kind_plural_parameter
+###### Parameters
 
 ###### fileName
 
-`any`
+`string`
 
 Full path to the file
 
-###### theme_returns
+###### Returns
 
-`any`
+`string`
 
 The content of the file if it exists
 
-##### getFileExtension()
-
-> **getFileExtension**(`filename`): `any`
-
-theme_defined_in: [index.js:489](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L489)
-
-###### kind_plural_parameter
-
-###### filename
-
-`any`
-
-###### theme_returns
-
-`any`
-
 ##### getFileObjects()
 
-> **getFileObjects**(): `any[]`
-
-theme_defined_in: [index.js:386](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L386)
+> **getFileObjects**(): `FileItem`[]
 
 Gets all file and directory objects in the current file structure
 
-###### theme_returns
+###### Returns
 
-`any[]`
+`FileItem`[]
 
 Array of file and directory objects
 
 ##### getFiles()
 
-> **getFiles**(): `any[]`
-
-theme_defined_in: [index.js:315](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L315)
+> **getFiles**(): `string`[]
 
 Gets the list of files in the current directory
 
-###### theme_returns
+###### Returns
 
-`any[]`
+`string`[]
 
 Array of file paths in the current directory
 
 ##### getFullFilePathsAndContents()
 
-> **getFullFilePathsAndContents**(): `any[]`
-
-theme_defined_in: [index.js:403](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L403)
+> **getFullFilePathsAndContents**(): `IFileEntry`[]
 
 Gets the full file paths and their contents in the current file structure
 
-###### theme_returns
+###### Returns
 
-`any[]`
+`IFileEntry`[]
 
 Array of file paths and their contents
 
-##### getLsString()
-
-> **getLsString**(): `string`
-
-theme_defined_in: [index.js:334](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L334)
-
-Gets an 'ls' formatted list of files in the current directory
-
-###### theme_returns
-
-`string`
-
-String of folders and files in the current directory in alphabetical order
-
 ##### getOpenFiles()
 
-> **getOpenFiles**(): `any[]`
-
-theme_defined_in: [index.js:464](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L464)
+> **getOpenFiles**(): `string`[]
 
 Gets the list of currently open files
 
-###### theme_returns
+###### Returns
 
-`any[]`
+`string`[]
 
 Array of file paths that are currently open
-
-##### getParentDirectory()
-
-> **getParentDirectory**(`path`): `{ name: any; parent: {} }`
-
-theme_defined_in: [index.js:512](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L512)
-
-###### kind_plural_parameter
-
-###### path
-
-`any`
-
-###### theme_returns
-
-`{ name: any; parent: {} }`
-
-###### name
-
-> **name**: `any` = `fileName`
-
-###### parent
-
-> **parent**: `{}` = `current`
-
-##### getPathComponents()
-
-> **getPathComponents**(`path`): `any`
-
-theme_defined_in: [index.js:509](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L509)
-
-###### kind_plural_parameter
-
-###### path
-
-`any`
-
-###### theme_returns
-
-`any`
-
-##### getPresentWorkingDirectory()
-
-> **getPresentWorkingDirectory**(): `string`
-
-theme_defined_in: [index.js:300](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L300)
-
-Gets the present working directory
-
-###### theme_returns
-
-`string`
-
-The present working directory
-
-##### openFile()
-
-> **openFile**(`fileName`): `void`
-
-theme_defined_in: [index.js:566](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L566)
-
-###### kind_plural_parameter
-
-###### fileName
-
-`any`
-
-###### theme_returns
-
-`void`
-
-##### resolvePath()
-
-> **resolvePath**(`path`): `any`
-
-theme_defined_in: [index.js:481](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L481)
-
-###### kind_plural_parameter
-
-###### path
-
-`any`
-
-###### theme_returns
-
-`any`
-
-##### setPresentWorkingDirectory()
-
-> **setPresentWorkingDirectory**(`path`): `void`
-
-theme_defined_in: [index.js:474](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L474)
-
-###### kind_plural_parameter
-
-###### path
-
-`any`
-
-###### theme_returns
-
-`void`
 
 ##### setVerbose()
 
 > **setVerbose**(`verbose`): `void`
 
-theme_defined_in: [index.js:471](https://github.com/codevideo/docs.codevideo.io/blob/a9828b646144452df4952a5c579f88fa01f1416c/temp_packages/fullstackcraftllc-codevideo-virtual-file-explorer/package/dist/index.js#L471)
-
 Sets the verbose mode for the virtual file explorer
 
-###### kind_plural_parameter
+###### Parameters
 
 ###### verbose
 
-`any`
+`boolean`
 
 Whether to enable verbose
 
-###### theme_returns
+###### Returns
 
 `void`
-}
 

@@ -1,3 +1,6 @@
+// Runs as ESM (.mts) on purpose: under tsx's CommonJS loader TypeDoc was
+// loaded twice, and typedoc-plugin-markdown's copy had no translations, so
+// pages showed raw keys like `theme_defined_in`.
 import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
@@ -6,6 +9,7 @@ import * as tar from 'tar';
 import * as td from 'typedoc';
 
 const execAsync = promisify(exec);
+const __dirname = import.meta.dirname;
 
 const PACKAGES = [
   {packageName: '@fullstackcraftllc/codevideo-virtual-ide', sidebarPosition: 1},
@@ -28,9 +32,10 @@ const OUTPUT_DIR = path.join(__dirname, '..', 'docs', 'libraries');
 async function downloadPackage(packageName: string): Promise<string | null> {
   console.log(`Processing ${packageName}...`);
   
-  // Create package directory
+  // Start from an empty package directory so old tarballs don't pile up
   const safeName = packageName.replace(/\//g, '-').replace(/^@/, '');
   const packageDir = path.join(TEMP_DIR, safeName);
+  fs.rmSync(packageDir, { recursive: true, force: true });
   fs.mkdirSync(packageDir, { recursive: true });
   
   try {
@@ -75,14 +80,47 @@ async function generateTypeDoc(packagePath: string | null, packageItem: {package
     const packageJsonPath = path.join(packagePath, 'package.json');
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
     
-    const typesFile = packageJson.types || packageJson.typings;
-    const entryPoint = typesFile 
-      ? path.join(packagePath, typesFile)
-      : path.join(packagePath, packageJson.main || 'index.js');
-    
+    // Prefer type declarations: documenting the compiled JS turns every type
+    // into `any` and shows TypeScript-private members. None of the packages
+    // declares `types` yet, but they all ship dist/index.d.ts.
+    const entryCandidates = [
+      packageJson.types,
+      packageJson.typings,
+      'dist/index.d.ts',
+      'src/index.ts',
+      packageJson.main || 'index.js',
+    ].filter(Boolean);
+    const entryPoint = entryCandidates
+      .map((candidate: string) => path.join(packagePath, candidate))
+      .find((candidatePath: string) => fs.existsSync(candidatePath));
+    if (!entryPoint) {
+      throw new Error(`No entry point found in ${packagePath}`);
+    }
+
+    // The site's tsconfig excludes temp_packages (so `npm run typecheck` skips
+    // the downloaded sources); give TypeDoc one that covers this entry point.
+    const tsconfigPath = path.join(packagePath, 'tsconfig.typedoc.json');
+    fs.writeFileSync(tsconfigPath, JSON.stringify({
+      compilerOptions: {
+        target: 'ES2022',
+        module: 'ESNext',
+        moduleResolution: 'Bundler',
+        skipLibCheck: true,
+        strict: true,
+      },
+      files: [entryPoint],
+    }, null, 2));
+
+    // Generate into temp_packages first and only replace the committed pages
+    // once that worked, so a failed run (e.g. npm unreachable on Netlify)
+    // keeps the previous docs instead of leaving broken links.
+    const stagingDir = path.join(TEMP_DIR, safeName, 'docs');
+    fs.rmSync(stagingDir, { recursive: true, force: true });
+
     const app = await td.Application.bootstrapWithPlugins({
       entryPoints: [entryPoint],
-      out: packageOutputDir,
+      tsconfig: tsconfigPath,
+      out: stagingDir,
       plugin: ['typedoc-plugin-markdown'],
       theme: 'markdown',
       router: 'module',
@@ -90,18 +128,21 @@ async function generateTypeDoc(packagePath: string | null, packageItem: {package
       exclude: ["**/__tests__/**/*", "**/*.test.ts", "**/*.spec.ts"],
       excludeExternals: true,
       excludePrivate: true,
-      excludeProtected: true
+      excludeProtected: true,
+      // "Defined in" links would point at temp_packages/ in this repo, pinned
+      // to the current commit, so every regeneration rewrote every page.
+      disableSources: true,
+      // The extracted packages have no node_modules of their own; don't fail
+      // the docs on type errors in their dependencies.
+      skipErrorChecking: true,
     });
 
-    app.options.addReader(new td.TSConfigReader());
-    
     const project = await app.convert();
     if (project) {
-      await app.generateDocs(project, packageOutputDir);
-      console.log(`Documentation for ${packageItem.packageName} generated in ${packageOutputDir}`);
+      await app.generateDocs(project, stagingDir);
 
       // now read in the globals.md file and add it to the index.md file
-      const globalsMarkdown = fs.readFileSync(path.join(packageOutputDir, 'globals.md'), 'utf8');
+      const globalsMarkdown = fs.readFileSync(path.join(stagingDir, 'globals.md'), 'utf8');
 
       // remove the first line of the globals.md file which includes the README for some reason
       const globalsMarkdownLines = globalsMarkdown.split('\n');
@@ -112,21 +153,24 @@ async function generateTypeDoc(packagePath: string | null, packageItem: {package
       const globalsMarkdownContent = globalsMarkdownLines.join('\n');
       
       // Create index.md file to link in Docusaurus
-      const indexPath = path.join(packageOutputDir, 'index.md');
+      const indexPath = path.join(stagingDir, 'index.md');
       const indexContent = `---
 title: "${packageItem.packageName}"
 sidebar_label: "${packageItem.packageName}"
 sidebar_position: ${packageItem.sidebarPosition}
 ---
 
-${globalsMarkdownContent}}
-
+${globalsMarkdownContent}
 `;
       fs.writeFileSync(indexPath, indexContent);
 
       // remove README.md and globals.md files
-      fs.unlinkSync(path.join(packageOutputDir, 'README.md'));
-      fs.unlinkSync(path.join(packageOutputDir, 'globals.md'));
+      fs.unlinkSync(path.join(stagingDir, 'README.md'));
+      fs.unlinkSync(path.join(stagingDir, 'globals.md'));
+
+      fs.rmSync(packageOutputDir, { recursive: true, force: true });
+      fs.renameSync(stagingDir, packageOutputDir);
+      console.log(`Documentation for ${packageItem.packageName} generated in ${packageOutputDir}`);
     }
   } catch (error) {
     console.error(`Error generating documentation for ${packageItem.packageName}:`, error);
