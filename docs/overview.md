@@ -7,7 +7,7 @@ sidebar_position: 4
 
 # Overview
 
-*****IMPORTANT! This documentation includes important concepts which if you don't read, will quickly lead you to frustration and confusion.**
+**IMPORTANT! This documentation includes important concepts which if you don't read, will quickly lead you to frustration and confusion.**
 
 ## CodeVideo Essentials
 
@@ -16,7 +16,7 @@ sidebar_position: 4
 Everything in the CodeVideo framework is based on actions. In Typescript, an action is defined as the following:
 
 ```typescript
-export interface Action {
+export interface IAction {
   name: AllActions;
   value: string;
 }
@@ -24,21 +24,18 @@ export interface Action {
 
 (See the latest definition [on the CodeVideo types repository](https://github.com/codevideo/codevideo-types/blob/main/src/interfaces/IAction.ts).)
 
-`AllActions` is a union of all possible action names:
+`AllActions` is the union of every action name. Names are hyphenated and start with their domain:
 
+- `author-`: what the narrator says, and pauses
+- `editor-`: typing, keystrokes and selection in the editor
+- `file-explorer-`: creating, opening, renaming and deleting files and folders
+- `mouse-`: moving the mouse and clicking
+- `terminal-`: typing in the terminal and setting its output
+- `external-`: showing a web page or a live preview
+- `slide-`: showing a Markdown slide
+- `composite-`: shortcuts that expand into several actions
 
-```typescript
-export type AllActions =
-  | AuthorActions
-  | FileExplorerActions
-  | EditorActions
-  | MouseActions
-  | TerminalActions
-  | AuthorActions
-  | ExternalActions;
-```
-
-Action names are hyphenated names relating to what the action does. For example, all editor-related actions are prefixed with `editor-`, all file explorer actions are prefixed with `file-explorer-`, and so on. (A quick check of all possible actions can be found in the dropdown on the action editor on the [CodeVideo Studio homepage](https://studio.codevideo.io).)
+Every action, with what its value means, is listed on the [Actions](/actions) page.
 
 ### Actions as JSON
 
@@ -75,4 +72,4 @@ A JSON example of a few speaking actions, creating and opening a file, and typin
 
 (You can go paste this into the JSON editor in the [CodeVideo Studio](https://studio.codevideo.io) to see what it looks like.)
 
-In summary: a list of actions and their corresponding JSON represents the most portable format in the CodeVideo framework. This also happens to be the format that is sent to the CodeVideo API to generate videos.
+In summary: a list of actions and their corresponding JSON represents the most portable format in the CodeVideo framework. This also happens to be the format that is sent to the [CodeVideo API](/api) to generate videos.

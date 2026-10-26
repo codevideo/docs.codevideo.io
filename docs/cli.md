@@ -3,83 +3,89 @@ title: "CodeVideo CLI"
 sidebar_label: "CLI"
 slug: /cli
 sidebar_position: 5
+description: Render CodeVideo projects to MP4 on your own machine with the CodeVideo CLI.
 ---
 
 # CodeVideo CLI
 
-**We highly recommend you quickly read concepts in [the overview section](/overview) before starting here.**
+The CLI renders the same projects as the [API](/api), but on your own machine: pass it actions, a lesson or a course, and it writes an MP4. If you haven't yet, read [the overview](/overview) for how those project types fit together.
 
-This guide shows you how to get started generating videos with the CodeVideo CLI.
+## Install
 
-## Installation
-
-Install the CLI package:
+The npm package installs the native binary for your operating system and architecture:
 
 ```bash
-go get github.com/codevideo/codevideo-cli@v0.0.1
+npx @fullstackcraftllc/codevideo-cli doctor
+npx @fullstackcraftllc/codevideo-cli install-browser # only when Chrome is not already installed
 ```
 
-Pass a project in (Actions, Lesson, or Course) via `-p`:
+Rendering needs Node.js 20 or newer, Chrome or Chromium, and FFmpeg. `doctor` checks that Chrome, FFmpeg and the native binary are found and that its working directories are writable. Chrome is found through `CODEVIDEO_CHROME_PATH`, the browser installed by `install-browser`, or the usual system locations; FFmpeg through `CODEVIDEO_FFMPEG_PATH`, then your `PATH`.
 
-```bash
-go run main.go -p "[{\"name\":\"author-speak-before\",\"value\":\"Let's learn how to use the print function in Python!\"},{\"name\":\"author-speak-before\",\"value\":\"First, let's make a Python file.\"},{\"name\":\"file-explorer-create-file\",\"value\":\"main.py\"},{\"name\":\"file-explorer-open-file\",\"value\":\"main.py\"},{\"name\":\"author-speak-before\",\"value\":\"and let's print 'Hello world!' to the console.\"},{\"name\":\"editor-type\",\"value\":\"print('Hello, world!')\"}]"
+To build from source instead, follow the [codevideo-cli README](https://github.com/codevideo/codevideo-cli#source-installation): clone the repository, install the `puppeteer-runner` dependencies and a Chrome build, then `go build -o codevideo`.
+
+### Narration
+
+Every `author-speak-*` action is turned into speech before recording. By default the CLI uses ElevenLabs and uploads the audio to S3, so it needs `ELEVEN_LABS_API_KEY` (optionally `ELEVEN_LABS_VOICE_ID`) plus `CODEVIDEO_S3_KEY_ID` and `CODEVIDEO_S3_SECRET`. To avoid cloud accounts, run the self-hosted codevideo-tts service and set `CODEVIDEO_TTS_PROVIDER=kokoro` and `TTS_SERVICE_URL`; the audio is then embedded in the job directly.
+
+The CLI reads these settings from a `.env` file next to its binary, or from the file named by `CODEVIDEO_ENV_FILE`.
+
+## Render a video
+
+Put your project JSON in a file, for example `actions.json`:
+
+```json
+[
+  { "name": "author-speak-before", "value": "Let's learn how to use the print function in Python!" },
+  { "name": "file-explorer-create-file", "value": "main.py" },
+  { "name": "file-explorer-open-file", "value": "main.py" },
+  { "name": "author-speak-before", "value": "Now let's print Hello, world to the console." },
+  { "name": "editor-type", "value": "print('Hello, world!')" }
+]
 ```
 
-The `codevideo` command internally does the following: 
-
-1. Detects what type of project you have passed in (Actions, Lesson, or Course)
-2. Generates a manifest (of type `ICodeVideoManifest`)
-3. Serves a file server at port 7000
-4. Serves a static gatsby site using `@fullstackcraft/codevideo-ide-react` (i.e. the `<CodeVideoIDE />` component) at 7001
-5. Uses `puppeteer-stream` to record in headless chromium the video at that gatsby site, pointing to your found in your project in webm format
-6. Converts the webm video to mp4 format using `ffmpeg`
-7. Saves the video to the root of your project
-
-(To see the full list of options for our CLI tool, please visit [https://github.com/codevideo/codevideo-cli].)
-
-While your video is being generated, you should see the progress in the terminal:
+and pass it with `-p`:
 
 ```bash
+npx @fullstackcraftllc/codevideo-cli -p "$(cat actions.json)"
+```
+
+Reading the JSON from a file sidesteps shell quoting. (In zsh, a `!` inside a double-quoted string triggers history expansion; `set +o histexpand` turns that off.)
+
+While the video renders you'll see the progress:
+
+```text
 Detected project type: Actions
 /> CodeVideo generation in progress...
 [=======                         ] 33%
 ```
 
-Upon completion, you should see the following message:
+and when it's done:
 
-```bash
-Detected project type: Actions
-/> CodeVideo generation in progress...
-[================================] 100%
-✅ CodeVideo saved to codevideo.mp4
+```text
+✅ CodeVideo successfully generated and saved to CodeVideo-2025-03-21-18-58-47.mp4
 ```
 
-This looks the same for a Lesson project. By default, videos are saved in the root with the format CodeVideo-YYYY-MM-DD-HH-MM-SS.mp4.
+Videos are saved in the current directory (or `CODEVIDEO_OUTPUT_DIR`) as `CodeVideo-YYYY-MM-DD-HH-MM-SS.mp4` unless you pass `-o`. A lesson renders the same way. A course renders one video per lesson, one lesson after another; leave out `-o` for courses so each lesson keeps its own file.
 
-For a Course, the CLI converts each lesson to a separate video in parallel, as resources allow:
+## Options
 
-```bash
-Detected project type: Course
-Found 15 lessons
-/> CodeVideo generation in progress...
-Lesson 1 [===============                 ] 52%
-Lesson 2 [============                    ] 41%
-Lesson 3 [=======                         ] 29%
-Lesson 4 [=====                           ] 25%
-Lesson 5 [=====                           ] 24%
-Lesson 6 [====                            ] 20%
-Lesson 7 [===                             ] 18%
-Lesson 8 [=                               ] 3%
-Lesson 9 [Awaiting resources...           ] 0%
-Lesson 10 [Awaiting resources...          ] 0%
-Lesson 11 [Awaiting resources...          ] 0%
-Lesson 12 [Awaiting resources...          ] 0%
-Lesson 13 [Awaiting resources...          ] 0%
-Lesson 14 [Awaiting resources...          ] 0%
-Lesson 15 [Awaiting resources...          ] 0%
-```
+| Flag | Default | What it does |
+| --- | --- | --- |
+| `-p`, `--project` | | Project JSON: an actions array, a lesson or a course |
+| `-o`, `--output` | `./CodeVideo-<timestamp>.mp4` | Output file path |
+| `-n`, `--orientation` | `landscape` | `landscape` or `portrait` |
+| `-r`, `--resolution` | `1080p` | `1080p` or `4K` |
+| `-c`, `--config` | | JSON file of `CodeVideoIDE` props (theme, font size, pauses and so on) |
+| `--open` | | Open the MP4 when it's done |
+| `-v`, `--verbose` | | Verbose logging |
+| `-d`, `--debug` | | Show the browser instead of running it headless |
+| `-V`, `--version` | | Print the version |
+| `-m serve` | | Run as a render worker that watches for job manifests, which is how the hosted API renders |
 
-By default, lesson videos are saved in the root with the format CodeVideo-YYYY-MM-DD-HH-MM-SS-lesson-X.mp4.
+## What happens during a render
 
-
-Enjoy!
+1. The CLI detects the project type (actions, lesson or course).
+2. It generates the narration audio and a manifest (`ICodeVideoManifest`).
+3. It serves the manifest on port 7000, and a static Gatsby site with the `<CodeVideoIDE />` component from `@fullstackcraftllc/codevideo-ide-react` on port 7001.
+4. Headless Chrome plays the project on that page while `puppeteer-stream` records it as WebM.
+5. FFmpeg converts the recording to MP4 and saves it.
