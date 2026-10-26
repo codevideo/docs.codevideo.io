@@ -1,14 +1,14 @@
 ---
-title: API Documentation
+title: Library Reference
 sidebar_label: Libraries
 slug: /libraries
 ---
 
 # CodeVideo Libraries Documentation
 
-This section contains the API documentation for all CodeVideo TypeScript packages.
+Generated TypeScript reference for the CodeVideo virtual IDE packages.
 
-- [@fullstackcraftllc/codevideo-virtual-ide](/docs/libraries/fullstackcraftllc-codevideo-virtual-ide)
-- [@fullstackcraftllc/codevideo-virtual-file-explorer](/docs/libraries/fullstackcraftllc-codevideo-virtual-file-explorer)
-- [@fullstackcraftllc/codevideo-virtual-editor](/docs/libraries/fullstackcraftllc-codevideo-virtual-editor)
-- [@fullstackcraftllc/codevideo-virtual-terminal](/docs/libraries/fullstackcraftllc-codevideo-virtual-terminal)
+- [@fullstackcraftllc/codevideo-virtual-ide](/libraries/fullstackcraftllc-codevideo-virtual-ide)
+- [@fullstackcraftllc/codevideo-virtual-file-explorer](/libraries/fullstackcraftllc-codevideo-virtual-file-explorer)
+- [@fullstackcraftllc/codevideo-virtual-editor](/libraries/fullstackcraftllc-codevideo-virtual-editor)
+- [@fullstackcraftllc/codevideo-virtual-terminal](/libraries/fullstackcraftllc-codevideo-virtual-terminal)

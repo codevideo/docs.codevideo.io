@@ -152,20 +152,20 @@ async function main(): Promise<void> {
   // Create an index.md file in the API directory
   const apiIndexPath = path.join(OUTPUT_DIR, 'index.md');
   let apiIndexContent = `---
-title: API Documentation
+title: Library Reference
 sidebar_label: Libraries
 slug: /libraries
 ---
 
 # CodeVideo Libraries Documentation
 
-This section contains the API documentation for all CodeVideo TypeScript packages.
+Generated TypeScript reference for the CodeVideo virtual IDE packages.
 
 `;
 
   PACKAGES.forEach(packageItem => {
     const safeName = packageItem.packageName.replace(/\//g, '-').replace(/^@/, '');
-    apiIndexContent += `- [${packageItem.packageName}](/docs/libraries/${safeName})\n`;
+    apiIndexContent += `- [${packageItem.packageName}](/libraries/${safeName})\n`;
   });
   
   fs.writeFileSync(apiIndexPath, apiIndexContent);

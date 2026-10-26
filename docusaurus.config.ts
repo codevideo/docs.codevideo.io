@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'CodeVideo Documentation',
-  tagline: 'Documentation for CodeVideo TypeScript packages',
+  title: 'CodeVideo Docs',
+  tagline: 'Turn a JSON list of actions into a narrated coding video',
   favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
@@ -36,6 +36,8 @@ const config: Config = {
       'classic',
       {
         docs: {
+          // docs-only mode: the Quick Start doc (slug: /) is the homepage
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -61,19 +63,32 @@ const config: Config = {
       },
       items: [
         {
-          to: '/docs/overview',
+          type: 'doc',
+          docId: 'quick-start',
           position: 'left',
-          label: 'Overview',
+          label: 'Quick Start',
         },
         {
-          to: '/docs/quick-start',
+          type: 'doc',
+          docId: 'api',
           position: 'left',
-          label: 'Video Quick Start',
+          label: 'API',
         },
         {
-          to: '/docs/libraries',
+          type: 'doc',
+          docId: 'libraries/index',
           position: 'left',
-          label: 'Library Documentation',
+          label: 'Libraries',
+        },
+        {
+          href: 'https://studio.codevideo.io/account',
+          label: 'Get an API key',
+          position: 'right',
+        },
+        {
+          href: 'https://codevideo.io',
+          label: 'codevideo.io',
+          position: 'right',
         },
         {
           href: 'https://github.com/codevideo',
@@ -89,16 +104,41 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Overview',
-              to: '/docs/overview',
-            },
-            {
               label: 'Quick Start',
-              to: '/docs/quick-start',
+              to: '/',
             },
             {
-              label: 'Library Documentation',
-              to: '/docs/libraries',
+              label: 'API reference',
+              to: '/api',
+            },
+            {
+              label: 'Overview',
+              to: '/overview',
+            },
+            {
+              label: 'CLI',
+              to: '/cli',
+            },
+            {
+              label: 'Libraries',
+              to: '/libraries',
+            },
+          ],
+        },
+        {
+          title: 'Product',
+          items: [
+            {
+              label: 'CodeVideo',
+              href: 'https://codevideo.io',
+            },
+            {
+              label: 'CodeVideo Studio',
+              href: 'https://studio.codevideo.io',
+            },
+            {
+              label: 'Get an API key',
+              href: 'https://studio.codevideo.io/account',
             },
           ],
         },
@@ -107,13 +147,8 @@ const config: Config = {
           items: [
             {
               label: 'GitHub Discussions',
-              href: 'https://github.com/codevideo/discussions',
+              href: 'https://github.com/orgs/codevideo/discussions',
             },
-          ],
-        },
-        {
-          title: 'All Repositories',
-          items: [
             {
               label: 'GitHub',
               href: 'https://github.com/codevideo',

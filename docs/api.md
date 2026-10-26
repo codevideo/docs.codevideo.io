@@ -1,7 +1,7 @@
 ---
 title: "CodeVideo REST API"
-sidebar_label: "CodeVideo REST API"
-slug: /codevideo-rest-api
+sidebar_label: "API reference"
+slug: /api
 sidebar_position: 2
 ---
 

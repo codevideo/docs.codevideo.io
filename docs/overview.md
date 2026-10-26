@@ -2,7 +2,7 @@
 title: "CodeVideo Overview"
 sidebar_label: "Overview"
 slug: /overview
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 # Overview
