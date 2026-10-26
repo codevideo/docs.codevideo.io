@@ -2,11 +2,26 @@
   command = "npm run build"
   publish = "build"
 
-# Handle redirects for SPA
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "22"
+
+# Docs are served from the site root; keep the old /docs/* URLs working.
+[[redirects]]
+  from = "/docs/quick-start"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/codevideo-rest-api"
+  to = "/api"
+  status = 301
+
+[[redirects]]
+  from = "/docs"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/docs/*"
+  to = "/:splat"
+  status = 301
