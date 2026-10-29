@@ -56,6 +56,11 @@ Every option is optional. Unknown keys are ignored, and a known key with the wro
 | `withCaptions` | boolean | | Show the narration as captions |
 | `isFileExplorerVisible` | boolean | `true` | Show the file explorer pane |
 | `isTerminalVisible` | boolean | `true` | Show the terminal pane |
+| `isEditorTabsVisible` | boolean | `true` | Show the editor tab bar and its filenames |
+| `isMinimapVisible` | boolean | `true` | Show the editor minimap |
+| `isMouseVisible` | boolean | `true` | Draw the mouse cursor. When it's hidden, mouse actions keep their timing and effects |
+| `wordWrap` | `"on"` or `"off"` | `"on"` | Wrap long lines on screen, without changing the code |
+| `orientation` | `"landscape"` or `"portrait"` | `"landscape"` | Video orientation. Portrait renders at 1080×1920 |
 | `fontSizePx` | number | | Base font size of the editor and IDE, in pixels |
 | `fileExplorerWidth` | number | | Width of the file explorer, in pixels |
 | `terminalHeight` | number | | Height of the terminal, in pixels |
@@ -80,6 +85,19 @@ curl -X POST https://api.codevideo.io/create-video-v3 \
     ],
     "options": { "theme": "light", "withCaptions": true, "isTerminalVisible": false }
   }'
+```
+
+For a portrait video, hide the panes that don't fit a narrow screen:
+
+```json
+"options": {
+  "orientation": "portrait",
+  "isFileExplorerVisible": false,
+  "isEditorTabsVisible": false,
+  "isMinimapVisible": false,
+  "isMouseVisible": false,
+  "wordWrap": "on"
+}
 ```
 
 ### Response
