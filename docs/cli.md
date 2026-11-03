@@ -75,6 +75,7 @@ Videos are saved in the current directory (or `CODEVIDEO_OUTPUT_DIR`) as `CodeVi
 | Flag | Default | What it does |
 | --- | --- | --- |
 | `-p`, `--project` | | Project JSON: an actions array, a lesson or a course |
+| `--project-file` | | Read the project JSON from a file instead of `-p` (no size limit; can't be combined with `-p`) |
 | `-o`, `--output` | `./CodeVideo-<timestamp>.mp4` | Output file path |
 | `-n`, `--orientation` | `landscape` | `landscape` or `portrait` |
 | `-r`, `--resolution` | `1080p` | `1080p` or `4K` |
@@ -85,6 +86,7 @@ Videos are saved in the current directory (or `CODEVIDEO_OUTPUT_DIR`) as `CodeVi
 | `--log-level` | `warn` | Most detailed log level to show: `error`, `warn`, `info`, `debug` or `trace`; overrides `-v` |
 | `--headed` | | Show the browser instead of running it headless (`-d`/`--debug` still works but is deprecated) |
 | `--slack-webhook-url` | | Post progress to a Slack incoming webhook at each stage and every 25% |
+| `--progress` | `human` | `json` writes stderr as one JSON object per line, for programs that run the CLI |
 | `-V`, `--version` | | Print the version |
 | `-m serve` | | Run as a render worker that watches for job manifests, which is how the hosted API renders |
 
@@ -103,6 +105,10 @@ A course shows an overall bar with one bar per lesson below it. The CLI narrates
   1 Variables      [================] 100%  Done
   2 Printing valu… [=               ]  12%  Starting browser
 ```
+
+With `--progress json`, every stderr line is a JSON object instead: progress at each stage, every 25% and at least once a second, such as `{"stage":"Recording","fraction":0.38,"elapsed":42.1,"total":110.4,"detail":"action 4/12"}` (a course's lesson lines add `"lesson"`, counted from 1), then one `{"result":"/absolute/path.mp4"}` per saved video, or `{"error":"...","log":"..."}` if the render failed.
+
+Ctrl-C, or SIGTERM sent to the CLI, stops the render along with its browser and ffmpeg. The CLI prints `Cancelled` and exits with code 130.
 
 Everything else (browser output, ffmpeg, timings) goes to `codevideo.log` in `CODEVIDEO_LOG_DIR`, which always records debug detail. If a render fails, the CLI prints the cause and that file's path.
 
