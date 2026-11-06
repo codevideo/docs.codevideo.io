@@ -116,6 +116,6 @@ Everything else (browser output, ffmpeg, timings) goes to `codevideo.log` in `CO
 
 1. The CLI detects the project type (actions, lesson or course).
 2. It generates the narration audio and a manifest (`ICodeVideoManifest`).
-3. It serves the manifest on port 7000, and a static Gatsby site with the `<CodeVideoIDE />` component from `@fullstackcraftllc/codevideo-ide-react` on port 7001.
+3. It serves the manifest on port 7000, and a static Next.js site with the `<CodeVideoIDE />` component from `@fullstackcraftllc/codevideo-ide-react` on port 7001.
 4. Headless Chrome plays the project on that page while `puppeteer-stream` records it as WebM.
 5. FFmpeg converts the recording to MP4 and saves it.
