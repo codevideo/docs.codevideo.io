@@ -128,7 +128,7 @@ Everything is under `~/.codevideo/`, or the folder `CODEVIDEO_HOME` points to:
 The MCP has the following tools, grouped by what they're for.
 
 <!-- mcp-tools:start -->
-<!-- Generated from @fullstackcraftllc/codevideo-mcp@1.2.0 by npm run generate-mcp-tools; edit scripts/generate-mcp-tools.mts, not this section. -->
+<!-- Generated from @fullstackcraftllc/codevideo-mcp@1.3.0 by npm run generate-mcp-tools; edit scripts/generate-mcp-tools.mts, not this section. -->
 
 ### Build a course
 
@@ -141,7 +141,7 @@ The MCP has the following tools, grouped by what they're for.
 - `codevideo_get_lesson_file_tree`: List the file paths present at the END of a lesson (cheap; no file contents, no snapshot).
 - `codevideo_get_lesson_file`: Get the contents of ONE file at the END of a lesson (cheap targeted read instead of dumping the whole snapshot).
 - `codevideo_compile_lesson`: Replay a lesson and verify its saved end-state projects offline. Returns passed, failed, blocked, or unsupported, with check kinds and actionable issues. Monaco diagnostics are presentation-only; dirty buffers prevent a pass.
-- `codevideo_validate_course`: Validate actions, continuity, diagnostic hovers, and fresh saved-file project verification. Every mustCompile lesson and the final lesson must have outcome passed; blocked/unsupported/dirty/stale states prevent done:true.
+- `codevideo_validate_course`: Validate actions, continuity, diagnostic hovers, copy/cut/paste presses that would do nothing, and fresh saved-file project verification. Every mustCompile lesson and the final lesson must have outcome passed; blocked/unsupported/dirty/stale states prevent done:true.
 - `codevideo_get_course_status`: Resumable checkpoint view of a course: lessons, action counts, estimated video length per lesson, flags — without pulling any snapshot.
 - `codevideo_export_course`: Export the full course (ICourse with snapshots) to a JSON file under ~/.codevideo/exports and return its path. The course itself isn't returned, so it doesn't fill your context.
 - `codevideo_generate_lesson_preview`: Generate a server-side HTML preview of a single lesson (open in a browser to eyeball it). Cheap; no video.

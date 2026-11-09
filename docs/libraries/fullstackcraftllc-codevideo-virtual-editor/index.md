@@ -16,7 +16,7 @@ Represents a virtual editor that can be manipulated by a series of actions.
 
 ##### new VirtualEditor()
 
-> **new VirtualEditor**(`initialCodeLines`, `actions`?, `verbose`?): [`VirtualEditor`](#virtualeditor)
+> **new VirtualEditor**(`initialCodeLines`, `actions`?, `verbose`?, `clipboard`?): [`VirtualEditor`](#virtualeditor)
 
 ###### Parameters
 
@@ -31,6 +31,10 @@ Represents a virtual editor that can be manipulated by a series of actions.
 ###### verbose?
 
 `boolean`
+
+###### clipboard?
+
+`IClipboard`
 
 ###### Returns
 
@@ -279,6 +283,26 @@ Returns the isSaved state of the virtual editor.
 `boolean`
 
 The isSaved state of the virtual editor.
+
+##### setClipboard()
+
+> **setClipboard**(`clipboard`): `void`
+
+Gives the editor the clipboard to copy to and paste from. The VirtualIDE
+passes one clipboard to all its editors, so a copy in one file can be
+pasted in another.
+
+###### Parameters
+
+###### clipboard
+
+`IClipboard`
+
+The clipboard to use
+
+###### Returns
+
+`void`
 
 ##### setCurrentCaretPosition()
 

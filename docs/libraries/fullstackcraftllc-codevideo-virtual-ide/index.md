@@ -43,6 +43,12 @@ A virtual IDE in the CodeVideo world consists of 4 main parts:
 
 #### Properties
 
+##### virtualClipboard
+
+> **virtualClipboard**: `VirtualClipboard`
+
+The virtual clipboard, shared by every editor so a copy in one file can be pasted in another.
+
 ##### virtualEditors
 
 > **virtualEditors**: `object`[]
@@ -261,6 +267,16 @@ Gets the author snapshot.
 ###### Returns
 
 `IAuthorSnapshot`
+
+##### getClipboardSnapshot()
+
+> **getClipboardSnapshot**(): `IClipboardSnapshot`
+
+Gets the clipboard snapshot.
+
+###### Returns
+
+`IClipboardSnapshot`
 
 ##### getCourseSnapshot()
 
