@@ -15,7 +15,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "generate-api": "tsx scripts/generate-npm-docs.mts"
+    "generate-api": "tsx scripts/generate-npm-docs.mts",
+    "generate-mcp-tools": "tsx scripts/generate-mcp-tools.mts"
   },
   "dependencies": {
     "@docusaurus/core": "3.7.0",

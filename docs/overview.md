@@ -72,4 +72,4 @@ A JSON example of a few speaking actions, creating and opening a file, and typin
 
 (You can go paste this into the JSON editor in the [CodeVideo Studio](https://studio.codevideo.io) to see what it looks like.)
 
-In summary: a list of actions and their corresponding JSON represents the most portable format in the CodeVideo framework. This also happens to be the format that is sent to the [CodeVideo API](/api) to generate videos.
+In summary: a list of actions and their corresponding JSON represents the most portable format in the CodeVideo framework. This also happens to be the format that is sent to the [CodeVideo API](/api) to generate videos. The [CLI](/cli) renders the same format on your own machine, and the [MCP server](/mcp) lets an AI assistant write it for you.
