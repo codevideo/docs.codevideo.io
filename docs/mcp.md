@@ -18,7 +18,7 @@ The CodeVideo MCP server lets an AI assistant such as Claude or Codex write comp
 
 ## Connect it to your assistant
 
-The examples below use the self-hosted Kokoro voice. For ElevenLabs, pass the ElevenLabs and S3 variables from [Narration](/cli#narration) instead of the two Kokoro ones.
+The examples below use the self-hosted Kokoro voice. For ElevenLabs, pass `ELEVEN_LABS_API_KEY` instead of the two Kokoro ones, plus any other [Narration](/cli#narration) variables you use, such as your own S3 bucket.
 
 ### Claude Code
 
@@ -54,7 +54,7 @@ Add it to `~/.codex/config.toml`, then restart Codex or open a new thread:
 command = "npx"
 args = ["-y", "@fullstackcraftllc/codevideo-mcp@latest"]
 startup_timeout_sec = 60
-env_vars = ["CODEVIDEO_TTS_PROVIDER", "TTS_SERVICE_URL", "ELEVEN_LABS_API_KEY", "ELEVEN_LABS_VOICE_ID", "CODEVIDEO_S3_KEY_ID", "CODEVIDEO_S3_SECRET"]
+env_vars = ["CODEVIDEO_TTS_PROVIDER", "TTS_SERVICE_URL", "ELEVEN_LABS_API_KEY", "ELEVEN_LABS_VOICE_ID", "CODEVIDEO_S3_KEY_ID", "CODEVIDEO_S3_SECRET", "CODEVIDEO_S3_BUCKET", "CODEVIDEO_S3_REGION"]
 ```
 
 ## How a course gets built

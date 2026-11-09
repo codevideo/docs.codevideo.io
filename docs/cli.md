@@ -25,7 +25,12 @@ To build from source instead, follow the [codevideo-cli README](https://github.c
 
 ### Narration
 
-Every `author-speak-*` action is turned into speech before recording. By default the CLI uses ElevenLabs and uploads the audio to S3, so it needs `ELEVEN_LABS_API_KEY` (optionally `ELEVEN_LABS_VOICE_ID`) plus `CODEVIDEO_S3_KEY_ID` and `CODEVIDEO_S3_SECRET`. To avoid cloud accounts, run the self-hosted codevideo-tts service and set `CODEVIDEO_TTS_PROVIDER=kokoro` and `TTS_SERVICE_URL`; the audio is then embedded in the job directly.
+Every `author-speak-*` action is turned into speech before recording, with one of two voices:
+
+- **ElevenLabs** (the default): set `ELEVEN_LABS_API_KEY`, and optionally `ELEVEN_LABS_VOICE_ID`. That's all you need: the clips are embedded in the render job. To serve them from your own S3 bucket instead, also set `CODEVIDEO_S3_KEY_ID`, `CODEVIDEO_S3_SECRET`, `CODEVIDEO_S3_BUCKET` and `CODEVIDEO_S3_REGION`. The bucket has to allow public reads on `codevideo/v3/audio/`, because the renderer loads each clip from its URL.
+- **Kokoro** (self-hosted, no cloud account): run the codevideo-tts service and set `CODEVIDEO_TTS_PROVIDER=kokoro` and `TTS_SERVICE_URL`. The audio is embedded in the job.
+
+ElevenLabs clips are reused whenever the same line is narrated again with the same voice, so rendering a lesson again doesn't pay for its narration twice. With S3 keys the bucket holds them; without, they're kept in `~/.cache/codevideo/tts`, or the folder `CODEVIDEO_TTS_CACHE_DIR` points to. Set `CODEVIDEO_TTS_CACHE=off` for a fresh take of every clip.
 
 The CLI reads these settings from a `.env` file next to its binary, or from the file named by `CODEVIDEO_ENV_FILE`.
 
