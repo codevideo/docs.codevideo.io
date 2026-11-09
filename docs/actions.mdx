@@ -22,9 +22,24 @@ What the narrator says, and pauses between steps.
 
 ## Editor
 
-Typing, keystrokes, selection, scrolling and the context menu in the editor.
+Typing, keystrokes, selection, scrolling, the context menu and TypeScript squiggles in the editor.
 
 <ActionList domain="editor" />
+
+### TypeScript squiggles
+
+Squiggles are off unless you ask for them, so existing projects render exactly as before. Turn them on for the whole video with the `isDiagnosticsVisible` option, or for part of a lesson with `editor-show-diagnostics` and `editor-hide-diagnostics`. To show an error's message the way VS Code does, move the mouse onto it with [`mouse-move-editor-diagnostic`](#mouse-move-editor-diagnostic). Its value is the active file's path, line and column, 1-based and separated by colons:
+
+```json
+{ "name": "mouse-move-editor-diagnostic", "value": "src/generics/generics.ts:62:29" }
+```
+
+The hover stays open through narration and waits, so the narration can read the message. Any other action closes it.
+
+- **When they update.** Squiggles are recomputed when an action that changed a file finishes, not on every keystroke. While `editor-type` runs, existing squiggles move with the text, and new ones appear when the typing ends.
+- **What checks the code.** TypeScript 5.4.5, the release Monaco ships, with settings close to a Create React App `tsconfig.json` (`strict`, `jsx: react-jsx`, the DOM libraries). `.ts` and `.tsx` files get type errors; `.js` and `.jsx` files get syntax errors only. The MCP's `codevideo_compile_lesson` uses the same release and settings, so it reports what a video shows.
+- **npm packages.** Projects carry no `node_modules`, so every package a file imports gets an untyped stand-in: `react`, `react-dom/client` or any other import never goes red. Names you take from a package still work as types (`ReactNode`, `React.FC<Props>`) and with type arguments (`useState<string>()`). CSS and image imports resolve as they do in Create React App.
+- **Known limits.** A callback passed to something an untyped package returned, such as `axios.get('/u').then((response) => ...)`, has no type for its parameters, so `strict` flags them as implicit `any`; give the parameter a type. Code written for an older TypeScript can show errors that release didn't, for example `Object.keys(value)` on an unconstrained generic since TypeScript 4.8.
 
 ## File explorer
 
@@ -34,7 +49,7 @@ Creating, opening, renaming, moving and deleting files and folders, plus the exp
 
 ## Mouse
 
-Moving the mouse to parts of the IDE, and left or right clicking.
+Moving the mouse to parts of the IDE, left or right clicking, and hovering a squiggle to show its message.
 
 <ActionList domain="mouse" />
 

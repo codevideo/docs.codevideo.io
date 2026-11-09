@@ -59,6 +59,7 @@ Every option is optional. Unknown keys are ignored, and a known key with the wro
 | `isEditorTabsVisible` | boolean | `true` | Show the editor tab bar and its filenames |
 | `isMinimapVisible` | boolean | `true` | Show the editor minimap |
 | `isMouseVisible` | boolean | `true` | Draw the mouse cursor. When it's hidden, mouse actions keep their timing and effects |
+| `isDiagnosticsVisible` | boolean | `false` | Show TypeScript squiggles (red errors, yellow warnings) for the whole video. The [`editor-show-diagnostics`](/actions#editor-show-diagnostics) and [`editor-hide-diagnostics`](/actions#editor-hide-diagnostics) actions switch them for part of a lesson instead |
 | `wordWrap` | `"on"` or `"off"` | `"on"` | Wrap long lines on screen, without changing the code |
 | `orientation` | `"landscape"` or `"portrait"` | `"landscape"` | Video orientation. Portrait renders at 1080×1920 |
 | `fontSizePx` | number | | Base font size of the editor and IDE, in pixels |
