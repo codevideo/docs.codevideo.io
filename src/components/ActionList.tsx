@@ -8,6 +8,7 @@ import {ActionBadge} from '@fullstackcraftllc/codevideo-react-components';
 import {
   AllActionDescriptions,
   isAuthorAction,
+  isClipboardAction,
   isCompositeAction,
   isEditorAction,
   isExternalAction,
@@ -21,6 +22,7 @@ import type {AllActions} from '@fullstackcraftllc/codevideo-types';
 const domainGuards = {
   author: isAuthorAction,
   editor: isEditorAction,
+  clipboard: isClipboardAction,
   'file-explorer': isFileExplorerAction,
   mouse: isMouseAction,
   terminal: isTerminalAction,

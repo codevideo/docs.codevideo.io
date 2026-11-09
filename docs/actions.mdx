@@ -22,7 +22,7 @@ What the narrator says, and pauses between steps.
 
 ## Editor
 
-Typing, keystrokes, selection, scrolling, the context menu and TypeScript squiggles in the editor.
+Typing, keystrokes, selection, copy, cut and paste, scrolling, the context menu and TypeScript squiggles in the editor.
 
 <ActionList domain="editor" />
 
@@ -40,6 +40,21 @@ The hover stays open through narration and waits, so the narration can read the 
 - **What checks the code.** TypeScript 5.4.5, the release Monaco ships, with settings close to a Create React App `tsconfig.json` (`strict`, `jsx: react-jsx`, the DOM libraries). `.ts` and `.tsx` files get type errors; `.js` and `.jsx` files get syntax errors only. The MCP's `codevideo_compile_lesson` uses the same release and settings, so it reports what a video shows.
 - **npm packages.** Projects carry no `node_modules`, so every package a file imports gets an untyped stand-in: `react`, `react-dom/client` or any other import never goes red. Names you take from a package still work as types (`ReactNode`, `React.FC<Props>`) and with type arguments (`useState<string>()`). CSS and image imports resolve as they do in Create React App.
 - **Known limits.** A callback passed to something an untyped package returned, such as `axios.get('/u').then((response) => ...)`, has no type for its parameters, so `strict` flags them as implicit `any`; give the parameter a type. Code written for an older TypeScript can show errors that release didn't, for example `Object.keys(value)` on an unconstrained generic since TypeScript 4.8.
+
+## Clipboard
+
+What [`editor-command-v`](#editor-command-v) pastes. [`editor-command-c`](#editor-command-c) and [`editor-command-x`](#editor-command-x) put the selected text on the clipboard, and every file shares it, so you can cut code in one file and paste it into another. With nothing selected, copy and cut take the caret's whole line, and pasting that line puts it above the caret's line, as VS Code does. A paste inserts the text exactly as it was copied, indentation included.
+
+To paste something copied outside the IDE, such as a snippet from a website, put it on the clipboard first with `clipboard-set-text`. Nothing on screen shows that copy, so say it in the narration.
+
+```json
+[
+  { "name": "clipboard-set-text", "value": "export const API_URL = 'https://example.com';\n" },
+  { "name": "editor-command-v", "value": "1" }
+]
+```
+
+<ActionList domain="clipboard" />
 
 ## File explorer
 
