@@ -128,7 +128,7 @@ Everything is under `~/.codevideo/`, or the folder `CODEVIDEO_HOME` points to:
 The MCP has the following tools, grouped by what they're for.
 
 <!-- mcp-tools:start -->
-<!-- Generated from @fullstackcraftllc/codevideo-mcp@1.3.0 by npm run generate-mcp-tools; edit scripts/generate-mcp-tools.mts, not this section. -->
+<!-- Generated from @fullstackcraftllc/codevideo-mcp@1.3.1 by npm run generate-mcp-tools; edit scripts/generate-mcp-tools.mts, not this section. -->
 
 ### Build a course
 
