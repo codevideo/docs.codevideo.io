@@ -85,6 +85,7 @@ Videos are saved in the current directory (or `CODEVIDEO_OUTPUT_DIR`) as `CodeVi
 | `-n`, `--orientation` | `landscape` | `landscape` or `portrait` |
 | `-r`, `--resolution` | `1080p` | `1080p` or `4K` |
 | `-c`, `--config` | | JSON file of `CodeVideoIDE` props (theme, font size, pauses and so on) |
+| `--audio-items` | | JSON file of narration made before the render, used instead of generating speech: `[{"text": "...", "path": "clip.mp3"}]` (or `"mp3Url"` with a `data:` or `file:` URL). Lines match by exact text, relative paths are read from the file's folder, and a line without a take is generated as usual |
 | `--open` | | Open the MP4 when it's done |
 | `-v`, `--verbose` | | Also show info log lines (config, TTS provider, log file) above the progress bar |
 | `-q`, `--quiet` | | Hide the progress bar and status lines; errors and the saved path still print |
